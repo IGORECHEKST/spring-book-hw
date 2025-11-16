@@ -1,18 +1,16 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Book;
+import com.example.demo.model.Book;
 import com.example.demo.repository.BookRepository;
-import org.springframework.stereotype.Service;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
-
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     @Override
     public Book save(Book book) {
