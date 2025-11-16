@@ -1,9 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.entity.Book;
+import com.example.demo.model.Book;
 import com.example.demo.service.BookService;
 import java.math.BigDecimal;
-import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,40 +18,25 @@ public class DemoApplication {
     @Bean
     public CommandLineRunner run(BookService bookService) {
         return args -> {
-            System.out.println("--- Запуск CommandLineRunner: Тестирование BookService ---");
-
-            Book book1 = new Book(
-                    null,
-                    "Гарри Поттер и Философский камень",
-                    "Джоан Роулинг",
-                    "978-5-389-07498-8",
-                    new BigDecimal("599.99"),
-                    "Первая книга о приключениях Гарри Поттера.",
-                    "cover1.jpg"
+            Book bookShadows = new Book(
+                    null, "Shadows of Forgotten Ancestors"
+                    , "Mykhailo Kotsiubynsky"
+                    , "978-617-690-336-1"
+                    , new BigDecimal("450.00")
+                    , "A classic story of Hutsul life and tragic love."
+                    , "shadows_ancestors.jpg"
             );
-            bookService.save(book1);
-            System.out.println("Сохранена книга: " + book1.getTitle());
 
-            Book book2 = new Book(
-                    null,
-                    "Властелин колец: Братство Кольца",
-                    "Дж. Р. Р. Толкин",
-                    "978-5-17-024887-1",
-                    new BigDecimal("850.00"),
-                    "Начало великой эпопеи Средиземья.",
-                    "cover2.jpg"
+            Book bookForestSong = new Book(
+                    null, "Forest Song"
+                    , "Lesya Ukrainka", "978-966-03-7981-5"
+                    , new BigDecimal("380.00")
+                    , "A poetic drama about the relationship between a man and a mythical creature."
+                    , "forest_song.jpg"
             );
-            bookService.save(book2);
-            System.out.println("Сохранена книга: " + book2.getTitle());
 
-            System.out.println("\n--- Список всех книг ---");
-            List<Book> allBooks = bookService.findAll();
-            allBooks.forEach(b ->
-                    System.out.println("ID: " + b.getId() +
-                            ", Название: " + b.getTitle() +
-                            ", Автор: " + b.getAuthor())
-            );
-            System.out.println("-------------------------");
+            bookService.save(bookShadows);
+            bookService.save(bookForestSong);
         };
     }
 }
