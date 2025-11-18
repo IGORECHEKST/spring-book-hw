@@ -18,22 +18,22 @@ public class DemoApplication {
     @Bean
     public CommandLineRunner run(BookService bookService) {
         return args -> {
-            Book bookShadows = new Book(
-                    null, "Shadows of Forgotten Ancestors"
-                    , "Mykhailo Kotsiubynsky"
-                    , "978-617-690-336-1"
-                    , new BigDecimal("450.00")
-                    , "A classic story of Hutsul life and tragic love."
-                    , "shadows_ancestors.jpg"
-            );
+            Book bookShadows = new Book();
+            bookShadows.setTitle("Shadows of Forgotten Ancestors");
+            bookShadows.setAuthor("Mykhailo Kotsiubynsky");
+            bookShadows.setIsbn("978-617-690-336-1");
+            bookShadows.setPrice(new BigDecimal("450.00"));
+            bookShadows.setDescription("A classic story of Hutsul life and tragic love.");
+            bookShadows.setCoverImage("shadows_ancestors.jpg");
 
-            Book bookForestSong = new Book(
-                    null, "Forest Song"
-                    , "Lesya Ukrainka", "978-966-03-7981-5"
-                    , new BigDecimal("380.00")
-                    , "A poetic drama about the relationship between a man and a mythical creature."
-                    , "forest_song.jpg"
-            );
+            Book bookForestSong = new Book();
+            bookForestSong.setTitle("Forest Song");
+            bookForestSong.setAuthor("Lesya Ukrainka");
+            bookForestSong.setIsbn("978-966-03-7981-5");
+            bookForestSong.setPrice(new BigDecimal("380.00"));
+            bookForestSong.setDescription("A poetic drama about the relationship "
+                    + "between a man and a mythical creature.");
+            bookForestSong.setCoverImage("forest_song.jpg");
 
             bookService.save(bookShadows);
             bookService.save(bookForestSong);

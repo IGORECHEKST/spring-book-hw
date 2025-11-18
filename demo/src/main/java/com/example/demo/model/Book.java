@@ -1,25 +1,21 @@
 package com.example.demo.model;
 
-import java.math.BigDecimal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import java.math.BigDecimal;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "books")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "book")
 @Getter
 @Setter
-public class Book {
 
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,4 +35,8 @@ public class Book {
     private String description;
 
     private String coverImage;
+
+    public Book() {
+    }
+
 }
