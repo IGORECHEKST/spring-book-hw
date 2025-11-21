@@ -11,10 +11,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "book")
+@Table(name = "books")
 @Getter
 @Setter
-
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +34,5 @@ public class Book {
     private String description;
 
     private String coverImage;
-
-    public Book() {
-    }
 
 }
